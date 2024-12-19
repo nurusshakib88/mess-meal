@@ -40,7 +40,7 @@ const CreateOrder = () => {
     try {
       const token = localStorage.getItem("token"); // Assuming the token is stored in local storage
       const response = await axios.post(
-        "https://mess-meal-server.vercel.app/api/orders", // Replace with your API endpoint
+        "http://localhost:5000/api/orders", // Replace with your API endpoint
         orderData,
         {
           headers: {

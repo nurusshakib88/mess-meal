@@ -22,13 +22,10 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const res = await axios.post(
-        "https://mess-meal-server.vercel.app/api/users/login",
-        {
-          email,
-          password,
-        }
-      );
+      const res = await axios.post("http://localhost:5000/api/users/login", {
+        email,
+        password,
+      });
 
       const { token, user } = res.data; // Assuming response contains token and user details
 
@@ -48,14 +45,11 @@ export const AuthProvider = ({ children }) => {
 
   const registerManager = async (name, email, password) => {
     try {
-      await axios.post(
-        "https://mess-meal-server.vercel.app/api/users/register-manager",
-        {
-          name,
-          email,
-          password,
-        }
-      );
+      await axios.post("http://localhost:5000/api/users/register-manager", {
+        name,
+        email,
+        password,
+      });
       alert("Manager registered successfully");
       navigate("/login");
     } catch (error) {
@@ -81,7 +75,7 @@ export const AuthProvider = ({ children }) => {
 
       // Make the API request to fetch user profile data
       const res = await axios.get(
-        `https://mess-meal-server.vercel.app/api/users/user/${userId}`,
+        `http://localhost:5000/api/users/user/${userId}`,
         {
           headers: {
             Authorization: `Bearer ${auth.token}`, // Set auth token in headers

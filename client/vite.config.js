@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://mess-meal-server.vercel.app", // Backend server
+        target: "http://localhost:5000", // Backend server
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },

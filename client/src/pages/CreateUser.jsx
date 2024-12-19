@@ -11,7 +11,7 @@ const CreateUser = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        "https://mess-meal-server.vercel.app/api/users/create-member",
+        "http://localhost:5000/api/users/create-member",
         {
           method: "POST",
           headers: {
