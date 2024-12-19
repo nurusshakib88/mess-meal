@@ -20,7 +20,7 @@ const AddExpense = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        "http://localhost:5000/api/expenses/get-expenses",
+        "https://mess-meal-server.vercel.app/api/expenses/get-expenses",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -36,7 +36,7 @@ const AddExpense = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        "http://localhost:5000/api/orders/summary/monthly-meals",
+        "https://mess-meal-server.vercel.app/api/orders/summary/monthly-meals",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -57,7 +57,7 @@ const AddExpense = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.post(
-        "http://localhost:5000/api/expenses/add-expense",
+        "https://mess-meal-server.vercel.app/api/expenses/add-expense",
         { type, amount: parseFloat(amount), month },
         { headers: { Authorization: `Bearer ${token}` } }
       );
