@@ -27,11 +27,11 @@ const AllOrder = () => {
         let response;
 
         if (auth.user.role === "manager") {
-          response = await axios.get("http://localhost:5000/api/orders/all", {
+          response = await axios.get("/api/api/orders/all", {
             headers: { Authorization: `Bearer ${token}` },
           });
         } else {
-          response = await axios.get("http://localhost:5000/api/orders", {
+          response = await axios.get("/api/api/orders", {
             headers: { Authorization: `Bearer ${token}` },
           });
         }
@@ -53,7 +53,7 @@ const AllOrder = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `http://localhost:5000/api/orders/${orderId}/meal`,
+        `/api/api/orders/${orderId}/meal`,
         {
           mealType,
           quantity: parseInt(updatedMeal.quantity, 10),
@@ -100,7 +100,7 @@ const AllOrder = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.patch(
-        `http://localhost:5000/api/orders/${orderId}/meal/status`,
+        `/api/api/orders/${orderId}/meal/status`,
         {
           mealType,
           status: mealStatus.status,

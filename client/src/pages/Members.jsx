@@ -11,7 +11,7 @@ const Members = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/users/users", {
+        const response = await fetch("/api/api/users/users", {
           method: "GET",
           headers: {
             Authorization: `Bearer ${auth.token}`, // Include the token
