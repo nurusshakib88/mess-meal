@@ -14,7 +14,7 @@ app.use(express.json());
 
 // Enable CORS
 const corsOptions = {
-  origin: "https://mess-meal.vercel.app", // Replace with your frontend URL
+  origin: "*", // Replace with your frontend URL
   credentials: true, // Allow credentials (like cookies and authorization headers)
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"], // Explicitly allow PATCH
   allowedHeaders: ["Content-Type", "Authorization"], // Allow headers
