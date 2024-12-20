@@ -36,10 +36,10 @@ mongoose
   .catch((error) => console.error("MongoDB connection error:", error));
 
 // Routes
-app.use("/api/users", userRoutes);
-app.use("/api/orders", orderRoutes);
-app.use("/api/deposits", depositRoutes);
-app.use("/api/expenses", expenseRoutes);
+app.use("/users", userRoutes);
+app.use("/orders", orderRoutes);
+app.use("/deposits", depositRoutes);
+app.use("/expenses", expenseRoutes);
 
 // Global error handling (optional but useful)
 app.use((err, req, res, next) => {

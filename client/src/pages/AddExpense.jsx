@@ -19,12 +19,9 @@ const AddExpense = () => {
   const fetchTotalExpenses = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.get(
-        "http://localhost:5000/api/expenses/get-expenses",
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+      const response = await axios.get("/api/expenses/get-expenses", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       setTotalExpenses(response.data);
     } catch (err) {
       setError(err.response?.data?.message || "An error occurred.");
@@ -35,12 +32,9 @@ const AddExpense = () => {
   const fetchMonthlyMeals = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.get(
-        "http://localhost:5000/api/orders/summary/monthly-meals",
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+      const response = await axios.get("/api/orders/summary/monthly-meals", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       setMonthlyMeals(response.data);
     } catch (err) {
       setError(err.response?.data?.message || "An error occurred.");
@@ -57,7 +51,7 @@ const AddExpense = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.post(
-        "http://localhost:5000/api/expenses/add-expense",
+        "/api/expenses/add-expense",
         { type, amount: parseFloat(amount), month },
         { headers: { Authorization: `Bearer ${token}` } }
       );

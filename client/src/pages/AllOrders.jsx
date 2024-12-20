@@ -27,11 +27,11 @@ const AllOrder = () => {
         let response;
 
         if (auth.user.role === "manager") {
-          response = await axios.get("http://localhost:5000/api/orders/all", {
+          response = await axios.get("/api/orders/all", {
             headers: { Authorization: `Bearer ${token}` },
           });
         } else {
-          response = await axios.get("http://localhost:5000/api/orders", {
+          response = await axios.get("/api/orders", {
             headers: { Authorization: `Bearer ${token}` },
           });
         }
