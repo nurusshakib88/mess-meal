@@ -74,11 +74,14 @@ export const AuthProvider = ({ children }) => {
       console.log("Fetching profile for user ID:", userId);
 
       // Make the API request to fetch user profile data
-      const res = await axios.get(`/api/api/users/user/${userId}`, {
-        headers: {
-          Authorization: `Bearer ${auth.token}`, // Set auth token in headers
-        },
-      });
+      const res = await axios.get(
+        `http://localhost:5000/api/users/user/${userId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${auth.token}`, // Set auth token in headers
+          },
+        }
+      );
 
       // Store the profile data directly as an object in the userProfile state
       setUserProfile(res.data); // Directly store the object
