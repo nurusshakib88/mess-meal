@@ -36,6 +36,10 @@ mongoose
   .catch((error) => console.error("MongoDB connection error:", error));
 
 // Routes
+app.get("/", (req, res) => {
+  res.send("Mess Meal backend!");
+});
+
 app.use("/users", userRoutes);
 app.use("/orders", orderRoutes);
 app.use("/deposits", depositRoutes);
