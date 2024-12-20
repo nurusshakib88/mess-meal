@@ -75,7 +75,7 @@ export const AuthProvider = ({ children }) => {
 
       // Make the API request to fetch user profile data
       const res = await axios.get(
-        `http://localhost:5000/api/users/user/${userId}`,
+        `/api/users/user/${userId}`,
         {
           headers: {
             Authorization: `Bearer ${auth.token}`, // Set auth token in headers
