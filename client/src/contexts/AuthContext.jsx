@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const res = await axios.post("/api/users/login", {
+      const res = await axios.post("http://localhost:5000/api/users/login", {
         email,
         password,
       });
@@ -45,7 +45,7 @@ export const AuthProvider = ({ children }) => {
 
   const registerManager = async (name, email, password) => {
     try {
-      await axios.post("/api/api/users/register-manager", {
+      await axios.post("http://localhost:5000/api/users/register-manager", {
         name,
         email,
         password,

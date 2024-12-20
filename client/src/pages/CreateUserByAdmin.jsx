@@ -18,7 +18,7 @@ const CreateUserByAdmin = () => {
     const fetchUsers = async () => {
       setLoading(true); // Indicate loading state
       try {
-        const response = await fetch("/api/api/users/users", {
+        const response = await fetch("http://localhost:5000/api/users/users", {
           method: "GET",
           headers: {
             Authorization: `Bearer ${auth.token}`,
@@ -67,7 +67,7 @@ const CreateUserByAdmin = () => {
     }
 
     try {
-      const response = await fetch("/api/api/users/create", {
+      const response = await fetch("http://localhost:5000/api/users/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
