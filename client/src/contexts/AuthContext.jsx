@@ -70,29 +70,27 @@ export const AuthProvider = ({ children }) => {
     navigate("/login");
   };
 
-  const getUserProfile = async () => {
-    
-    const token = localStorage.getItem("token");
-    try {
-      // Extract user ID from auth object
-      const userId = auth.user.id;
-      console.log("Fetching profile for user ID:", userId);
+  // const getUserProfile = async () => {
+  //   try {
+  //     // Extract user ID from auth object
+  //     const userId = auth.user.id;
+  //     console.log("Fetching profile for user ID:", userId);
 
-      // Make the API request to fetch user profile data
-      const res = await axios.get(`/api/users/user/${userId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`, // Set auth token in headers
-        },
-      });
+  //     // Make the API request to fetch user profile data
+  //     const res = await axios.get(`/api/users/user/${userId}`, {
+  //       headers: {
+  //         Authorization: `Bearer ${auth.token}`, // Set auth token in headers
+  //       },
+  //     });
 
-      // Store the profile data directly as an object in the userProfile state
-      setUserProfile(res.data); // Directly store the object
-      console.log("User profile data:", res.data); // Log for verification
-    } catch (error) {
-      console.error("Error fetching user profile:", error);
-      alert("Failed to fetch user profile");
-    }
-  };
+  //     // Store the profile data directly as an object in the userProfile state
+  //     setUserProfile(res.data); // Directly store the object
+  //     console.log("User profile data:", res.data); // Log for verification
+  //   } catch (error) {
+  //     console.error("Error fetching user profile:", error);
+  //     alert("Failed to fetch user profile");
+  //   }
+  // };
 
   // Fetch profile data whenever the auth state changes (e.g., on login)
   useEffect(() => {
@@ -109,7 +107,7 @@ export const AuthProvider = ({ children }) => {
         registerManager,
         logout,
         userProfile,
-        getUserProfile,
+        // getUserProfile,
         loading,
       }}
     >
