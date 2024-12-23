@@ -24,7 +24,7 @@ const DepositRequest = () => {
     const fetchDeposits = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("api/api/deposits", {
+        const response = await axios.get("api/deposits", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -48,7 +48,7 @@ const DepositRequest = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "api/api/deposits",
+        "api/deposits",
         { amount, reference },
         {
           headers: {
@@ -74,7 +74,7 @@ const DepositRequest = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.patch(
-        `api/api/deposits/${depositId}/status`,
+        `api/deposits/${depositId}/status`,
         { status: newStatus },
         {
           headers: {

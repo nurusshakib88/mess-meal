@@ -53,7 +53,7 @@ const AllOrder = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `/api/api/orders/${orderId}/meal`,
+        `/api/orders/${orderId}/meal`,
         {
           mealType,
           quantity: parseInt(updatedMeal.quantity, 10),
@@ -100,7 +100,7 @@ const AllOrder = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.patch(
-        `/api/api/orders/${orderId}/meal/status`,
+        `/api/orders/${orderId}/meal/status`,
         {
           mealType,
           status: mealStatus.status,

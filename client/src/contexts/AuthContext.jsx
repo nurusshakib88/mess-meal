@@ -9,6 +9,7 @@ export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState(null); // Auth will store token and user info
   const [userProfile, setUserProfile] = useState(null); // Store user profile data
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   // Fetch user data from localStorage on initial load
   useEffect(() => {
@@ -22,10 +23,13 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const res = await axios.post("/api/users/login", {
-        email,
-        password,
-      });
+      const res = await axios.post(
+        "https://mess-mealserver.vercel.app/users/login",
+        {
+          email,
+          password,
+        }
+      );
 
       const { token, user } = res.data; // Assuming response contains token and user details
 
@@ -74,14 +78,11 @@ export const AuthProvider = ({ children }) => {
       console.log("Fetching profile for user ID:", userId);
 
       // Make the API request to fetch user profile data
-      const res = await axios.get(
-        `/api/users/user/${userId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${auth.token}`, // Set auth token in headers
-          },
-        }
-      );
+      const res = await axios.get(`/api/users/user/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${auth.token}`, // Set auth token in headers
+        },
+      });
 
       // Store the profile data directly as an object in the userProfile state
       setUserProfile(res.data); // Directly store the object
