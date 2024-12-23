@@ -11,10 +11,5 @@
       "src": "/(.*)",
       "dest": "/"
     }
-  ],
-  "env": {
-    "PORT": "5000",
-    "JWT_SECRET": "yourSecretKey",
-    "MONGO_URI": "mongodb+srv://nurusshakib88:nurusshakib%4088@cluster0.6nv4boa.mongodb.net/mess_meal"
-  }
+  ]
 }
