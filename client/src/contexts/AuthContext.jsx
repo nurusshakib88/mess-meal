@@ -51,11 +51,14 @@ export const AuthProvider = ({ children }) => {
   };
   const registerManager = async (name, email, password) => {
     try {
-      await axios.post("/api/users/register-manager", {
-        name,
-        email,
-        password,
-      });
+      await axios.post(
+        "https://mess-mealserver.vercel.app/users/register-manager",
+        {
+          name,
+          email,
+          password,
+        }
+      );
       alert("Manager registered successfully");
       navigate("/login");
     } catch (error) {
@@ -80,11 +83,14 @@ export const AuthProvider = ({ children }) => {
       console.log("Fetching profile for user ID:", userId);
 
       // Make the API request to fetch user profile data
-      const res = await axios.get(`/api/users/user/${userId}`, {
-        headers: {
-          Authorization: `Bearer ${auth.token}`, // Set auth token in headers
-        },
-      });
+      const res = await axios.get(
+        `https://mess-mealserver.vercel.app/users/user/${userId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${auth.token}`, // Set auth token in headers
+          },
+        }
+      );
 
       // Store the profile data directly as an object in the userProfile state
       setUserProfile(res.data); // Directly store the object

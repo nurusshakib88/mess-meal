@@ -11,12 +11,15 @@ const Members = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch("/api/users/users", {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${auth.token}`, // Include the token
-          },
-        });
+        const response = await fetch(
+          "https://mess-mealserver.vercel.app/users/users",
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${auth.token}`, // Include the token
+            },
+          }
+        );
 
         if (!response.ok) {
           throw new Error("Failed to fetch users");

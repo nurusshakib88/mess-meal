@@ -27,13 +27,19 @@ const AllOrder = () => {
         let response;
 
         if (auth.user.role === "manager") {
-          response = await axios.get("/api/orders/all", {
-            headers: { Authorization: `Bearer ${token}` },
-          });
+          response = await axios.get(
+            "https://mess-mealserver.vercel.app/orders/all",
+            {
+              headers: { Authorization: `Bearer ${token}` },
+            }
+          );
         } else {
-          response = await axios.get("/api/orders", {
-            headers: { Authorization: `Bearer ${token}` },
-          });
+          response = await axios.get(
+            "https://mess-mealserver.vercel.app/orders",
+            {
+              headers: { Authorization: `Bearer ${token}` },
+            }
+          );
         }
 
         setOrders(response.data);
@@ -53,7 +59,7 @@ const AllOrder = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `/api/orders/${orderId}/meal`,
+        `https://mess-mealserver.vercel.app/orders/${orderId}/meal`,
         {
           mealType,
           quantity: parseInt(updatedMeal.quantity, 10),
@@ -100,7 +106,7 @@ const AllOrder = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.patch(
-        `/api/orders/${orderId}/meal/status`,
+        `https://mess-mealserver.vercel.app/orders/${orderId}/meal/status`,
         {
           mealType,
           status: mealStatus.status,

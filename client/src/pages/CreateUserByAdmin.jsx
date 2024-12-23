@@ -18,12 +18,15 @@ const CreateUserByAdmin = () => {
     const fetchUsers = async () => {
       setLoading(true); // Indicate loading state
       try {
-        const response = await fetch("/api/users/users", {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${auth.token}`,
-          },
-        });
+        const response = await fetch(
+          "https://mess-mealserver.vercel.app/users/users",
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${auth.token}`,
+            },
+          }
+        );
 
         if (!response.ok) {
           throw new Error("Failed to fetch users");
@@ -67,14 +70,17 @@ const CreateUserByAdmin = () => {
     }
 
     try {
-      const response = await fetch("/api/users/create", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${auth.token}`,
-        },
-        body: JSON.stringify(requestBody),
-      });
+      const response = await fetch(
+        "https://mess-mealserver.vercel.app/users/create",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${auth.token}`,
+          },
+          body: JSON.stringify(requestBody),
+        }
+      );
 
       const data = await response.json();
       if (response.ok) {
