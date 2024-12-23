@@ -4,7 +4,7 @@ import LoginBg from "../assets/login-bg.jpg";
 import { Link } from "react-router-dom";
 
 const Login = () => {
-  const { login } = useContext(AuthContext);
+  const { login, loading } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -41,7 +41,7 @@ const Login = () => {
               className="input input-bordered"
             />
             <button type="submit" className="btn btn-primary">
-              Login
+              {loading ? "Loggin in ..." : "Login"}
             </button>
           </form>
           <p className="text-center mt-4">

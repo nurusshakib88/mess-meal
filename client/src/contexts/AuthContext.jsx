@@ -22,14 +22,12 @@ export const AuthProvider = ({ children }) => {
   }, [navigate]);
 
   const login = async (email, password) => {
+    setLoading(true); // Start loading
     try {
-      const res = await axios.post(
-        "https://mess-mealserver.vercel.app/users/login",
-        {
-          email,
-          password,
-        }
-      );
+      const res = await axios.post("/api/users/login", {
+        email,
+        password,
+      });
 
       const { token, user } = res.data; // Assuming response contains token and user details
 
@@ -44,9 +42,10 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       console.error("Login error:", error.response?.data);
       alert("Invalid credentials");
+    } finally {
+      setLoading(false); // Stop loading
     }
   };
-
   const registerManager = async (name, email, password) => {
     try {
       await axios.post("/api/users/register-manager", {
@@ -72,6 +71,8 @@ export const AuthProvider = ({ children }) => {
   };
 
   const getUserProfile = async () => {
+    
+    const token = localStorage.getItem("token");
     try {
       // Extract user ID from auth object
       const userId = auth.user.id;
@@ -80,7 +81,7 @@ export const AuthProvider = ({ children }) => {
       // Make the API request to fetch user profile data
       const res = await axios.get(`/api/users/user/${userId}`, {
         headers: {
-          Authorization: `Bearer ${auth.token}`, // Set auth token in headers
+          Authorization: `Bearer ${token}`, // Set auth token in headers
         },
       });
 
@@ -109,6 +110,7 @@ export const AuthProvider = ({ children }) => {
         logout,
         userProfile,
         getUserProfile,
+        loading,
       }}
     >
       {children}
