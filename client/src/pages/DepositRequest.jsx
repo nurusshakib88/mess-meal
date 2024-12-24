@@ -24,11 +24,14 @@ const DepositRequest = () => {
     const fetchDeposits = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("api/deposits", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await axios.get(
+          "https://mess-mealserver.vercel.app/deposits",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         setDeposits(response.data);
       } catch (err) {
         setError(
@@ -48,7 +51,7 @@ const DepositRequest = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "api/deposits",
+        "https://mess-mealserver.vercel.app/deposits",
         { amount, reference },
         {
           headers: {
