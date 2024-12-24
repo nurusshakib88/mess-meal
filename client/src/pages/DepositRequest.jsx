@@ -77,7 +77,7 @@ const DepositRequest = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.patch(
-        `api/deposits/${depositId}/status`,
+        `https://mess-mealserver.vercel.app/deposits/${depositId}/status`,
         { status: newStatus },
         {
           headers: {
